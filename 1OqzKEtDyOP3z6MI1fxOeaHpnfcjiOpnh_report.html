@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Report - Pattlolla Sahithi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+    <!-- Updated font imports for a more beautiful look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0047AB;
+            --secondary-teal: #00C4B4;
+            --light-gray: #F8F9FA;
+            --white: #ffffff;
+            --text-primary: #2D3748;
+            --text-secondary: #4A5568;
+            --shadow-sm: 0 2px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --low-score: #f94144;
+            --mid-score: #f9c74f;
+            --high-score: #2ecc71;
+            --code-bg: #e9ecef;
+            --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            --separator-color: rgba(255, 255, 255, 0.3);
+            --separator-color-section: rgba(0, 71, 171, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--text-primary);
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .report-container {
+            max-width: 850px;
+            margin: 3rem auto;
+            padding: 0 20px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2.5rem;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+            opacity: 0.1;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .header-title {
+            width: 100%;
+            text-align: center;
+        }
+
+        .header-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+
+        .header-columns {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 1rem;
+        }
+
+        .header-column {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .header-column:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            height: 60%;
+            width: 1px;
+            background: var(--separator-color);
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+        }
+
+        .header-column.metadata {
+            text-align: left;
+        }
+
+        .header-column.candidate {
+            text-align: right;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            margin: 0.3rem 0;
+            font-weight: 300;
+        }
+
+        .header-column.metadata p .label {
+            font-weight: 600;
+        }
+
+        .header a, .social-link {
+            position: relative;
+            z-index: 10;
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .header a:hover {
+            color: #E0F7FA;
+        }
+
+        .candidate-info-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .candidate-details-header {
+            text-align: right;
+        }
+
+        .candidate-name-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+
+        .candidate-email-header {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: #E0F7FA;
+        }
+
+        .candidate-email-header .label {
+            font-weight: 600;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .section::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-blue), transparent);
+            margin: 2rem auto 0;
+        }
+
+        .section:last-child::after {
+            display: none;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, var(--primary-blue), transparent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title i {
+            margin-right: 0.5rem;
+            font-size: 1.3rem;
+            color: var(--secondary-teal);
+        }
+
+        .scorecard-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: flex-start; /* Changed from space-between to flex-start */
+        }
+
+        .scorecard {
+            background: var(--white);
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+            border-radius: 12px;
+            border: 1px solid rgba(0,71,171,0.1);
+            flex: 1 1 calc(33.333% - 1.5rem);
+            max-width: calc(33.333% - 1.5rem);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scorecard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .scorecard:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .scorecard-header {
+            margin-bottom: 0.8rem;
+        }
+
+        .scorecard-category {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .scorecard-score {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--gradient-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .progress {
+            height: 6.6px;
+            border-radius: 11px;
+            overflow: hidden;
+            background-color: #e6e6e6;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            transition: width 1.5s ease-in-out;
+            background-size: 30px 30px;
+            animation: progress-stripes 1s linear infinite;
+        }
+
+        @keyframes progress-stripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 30px 0; }
+        }
+
+        .coding-question {
+            margin-bottom: 2.5rem;
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+
+        .coding-question:hover {
+            transform: translateY(-3px);
+        }
+
+        .coding-question h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .coding-question p {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .coding-question pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-image: var(--gradient-primary) 1;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+
+        .question-category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-teal);
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+
+        .question-category-title i {
+            margin-right: 0.5rem;
+            color: var(--secondary-teal);
+        }
+
+        .questions-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .questions-list li {
+            background: var(--white);
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 0.8rem;
+            box-shadow: var(--shadow-sm);
+            font-size: 0.9rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-teal);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .questions-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .question-text {
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            color: var(--primary-blue); 
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .answer-summary {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            background: var(--light-gray);
+            padding: 0.5rem;
+            border-radius: 5px;
+            border-left: 3px solid var(--secondary-teal);
+        }
+
+        .interviewer-card {
+            background: var(--white);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,71,171,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .interviewer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+            opacity: 0.05;
+            border-radius: 12px;
+        }
+
+        .interviewer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .interviewer-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .interviewer-column {
+            flex: 1 1 30%;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .interviewer-column:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            height: 60%;
+            width: 1px;
+            background: var(--separator-color-section);
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+        }
+
+        .interviewer-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+            letter-spacing: 0.5px;
+        }
+
+        .interviewer-details {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+        }
+
+        .interviewer-details .label {
+            font-weight: 600;
+        }
+
+        .social-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .social-link i {
+            margin-right: 0.4rem;
+            color: var(--secondary-teal);
+        }
+
+        .social-link:hover {
+            color: var(--secondary-teal);
+        }
+
+        @media (hover: none) {
+            .social-link:hover {
+                color: var(--primary-blue);
+            }
+        }
+
+        .footer {
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            font-size: 11px;
+            border-radius: 0 0 15px 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+            opacity: 0.1;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            overflow: hidden;
+        }
+
+        .footer-logo::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: var(--secondary-teal);
+            clip-path: polygon(0 50%, 25% 100%, 50% 50%, 75% 100%, 100% 50%);
+            opacity: 0.8;
+        }
+
+        .footer-logo span {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .report-container {
+                padding: 0 15px;
+                margin: 1.5rem auto;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .header-columns {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .header-column {
+                width: 100%;
+                text-align: center;
+            }
+
+            .header-column:not(:last-child)::after {
+                display: none;
+            }
+
+            .header-column.metadata,
+            .header-column.candidate {
+                text-align: center;
+            }
+
+            .candidate-info-header {
+                justify-content: center;
+            }
+
+            .candidate-details-header {
+                text-align: center;
+            }
+
+            .header-title h1 {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .scorecard {
+                flex: 1 1 calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+            }
+
+            .interviewer-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .interviewer-column {
+                flex: 1 1 100%;
+            }
+
+            .interviewer-column:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-title h1 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .scorecard {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <!-- Header with Centered Title -->
+        <div class="header">
+            <!-- Centered Title Section -->
+            <div class="header-title">
+                <h1>Interview Report</h1>
+            </div>
+            <!-- Columns for Metadata and Candidate Info -->
+            <div class="header-columns">
+                <div class="header-column metadata">
+                    
+                    <p><span class="label">Interview Date:</span> 7/24/2025 10:00:00</p>
+                    
+                    
+                </div>
+                <div class="header-column candidate">
+                    
+                    <div class="candidate-info-header">
+                        <div class="candidate-details-header">
+                            <div class="candidate-name-header">Pattlolla Sahithi</div>
+                            
+                            <div class="candidate-email-header"><span class="label">Email:</span> pattlollasahithi@gmail.com</div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Interviewer Information with Dynamic Columns -->
+        
+
+
+        <!-- Ratings with Progress Bars -->
+        <div class="section">
+            
+
+            
+            
+            <h3 class="section-title"><i class="bi bi-code-square"></i> General</h3>
+            <div class="scorecard-grid">
+                
+                
+                <div class="scorecard">
+                    <div class="scorecard-header">
+                        <div class="scorecard-category">Self Introduction</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80.0%; background: var(--high-score);" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
+                    </div>
+                    <div class="scorecard-score">4/5</div>
+                </div>
+                
+                
+                <div class="scorecard">
+                    <div class="scorecard-header">
+                        <div class="scorecard-category">Communication</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 60.0%; background: var(--mid-score);" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5"></div>
+                    </div>
+                    <div class="scorecard-score">3/5</div>
+                </div>
+                
+            </div>
+            
+            
+            
+            <h3 class="section-title"><i class="bi bi-code-square"></i> Project evaluation</h3>
+            <div class="scorecard-grid">
+                
+                
+                <div class="scorecard">
+                    <div class="scorecard-header">
+                        <div class="scorecard-category">Project Explanation</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 60.0%; background: var(--mid-score);" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5"></div>
+                    </div>
+                    <div class="scorecard-score">3/5</div>
+                </div>
+                
+            </div>
+            
+            
+            
+            <h3 class="section-title"><i class="bi bi-code-square"></i> Technical theory</h3>
+            <div class="scorecard-grid">
+                
+                
+                <div class="scorecard">
+                    <div class="scorecard-header">
+                        <div class="scorecard-category">Technical Theory Ratings</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80.0%; background: var(--high-score);" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
+                    </div>
+                    <div class="scorecard-score">4/5</div>
+                </div>
+                
+            </div>
+            
+            
+            
+            <h3 class="section-title"><i class="bi bi-code-square"></i> Programming</h3>
+            <div class="scorecard-grid">
+                
+                
+                <div class="scorecard">
+                    <div class="scorecard-header">
+                        <div class="scorecard-category">Javascript Coding
+Rating</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80.0%; background: var(--high-score);" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
+                    </div>
+                    <div class="scorecard-score">4/5</div>
+                </div>
+                
+                
+                <div class="scorecard">
+                    <div class="scorecard-header">
+                        <div class="scorecard-category">Python Coding Rating</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 100.0%; background: var(--high-score);" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5"></div>
+                    </div>
+                    <div class="scorecard-score">5/5</div>
+                </div>
+                
+                
+                <div class="scorecard">
+                    <div class="scorecard-header">
+                        <div class="scorecard-category">Sql Coding
+Rating</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 40.0%; background: var(--mid-score);" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5"></div>
+                    </div>
+                    <div class="scorecard-score">2/5</div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+
+        <!-- Questions Asked -->
+        
+
+        <!-- Coding Questions -->
+        
+
+        <!-- Topic-Wise Feedback and Improvement Points -->
+        
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-chat-left-text-fill"></i> Topic-Wise Feedback and Improvement Points</h2>
+            <div class="question-section">
+                <ul class="questions-list">
+                    
+                    <li>
+                        <div class="question-text"><strong></strong> General</div>
+                        
+                        <div class="feedback-item">
+                            <strong>1</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate briefly listed technical skills as Python, JavaScript, and C but did not elaborate on their proficiency or experience in these languages. There was no demonstration of practical knowledge or examples related to these skills.</div>
+                            
+                            
+                            <div class="answer-summary"><strong>Improvement Points:</strong>
+                                <ul>
+                                    
+                                    <li>Lack of detailed explanation or examples for listed technical skills</li>
+                                    
+                                    <li>No demonstration of hands-on experience or projects in these languages</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Prepare to discuss specific projects or tasks completed using each language</li>
+                                    
+                                    <li>Be ready to explain core concepts and practical applications of each skill</li>
+                                    
+                                    <li>Practice articulating your experience and proficiency clearly</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="feedback-item">
+                            <strong>2</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate did not provide any examples of projects or examinations, indicating a lack of practical experience or academic exposure relevant to the role.</div>
+                            
+                            
+                            <div class="answer-summary"><strong>Improvement Points:</strong>
+                                <ul>
+                                    
+                                    <li>No projects or examinations completed to demonstrate applied knowledge</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Engage in small projects or coursework to build practical experience</li>
+                                    
+                                    <li>Prepare to discuss any relevant learning experiences or self-study efforts</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="feedback-item">
+                            <strong>3</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate showed a basic understanding of CSS and HTML concepts such as using flexbox for layout and setting background images and colors. However, explanations were somewhat informal and lacked technical precision.</div>
+                            
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Review CSS layout techniques including flexbox and grid with precise terminology</li>
+                                    
+                                    <li>Practice explaining your code and design choices clearly and technically</li>
+                                    
+                                    <li>Work on articulating the purpose and effect of CSS properties in your projects</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="feedback-item">
+                            <strong>4</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate showed a basic understanding of embedding YouTube videos using the video tag and source URLs, though the explanation was somewhat imprecise. In JavaScript, they described a simple average calculator implementation with event handling and input validation but struggled with some concepts such as event bubbling, query selectors, and closures.</div>
+                            
+                            
+                            <div class="answer-summary"><strong>Improvement Points:</strong>
+                                <ul>
+                                    
+                                    <li>Incorrect or incomplete understanding of embedding YouTube videos (using video tag instead of iframe)</li>
+                                    
+                                    <li>Limited knowledge of JavaScript event handling concepts like event bubbling and capturing</li>
+                                    
+                                    <li>Confusion about DOM manipulation methods such as `querySelectorAll`</li>
+                                    
+                                    <li>Inconsistent clarity and technical accuracy in explaining JavaScript functionality</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Review correct methods to embed YouTube videos using `&lt;iframe&gt;` tags</li>
+                                    
+                                    <li>Study JavaScript event propagation including bubbling and capturing phases</li>
+                                    
+                                    <li>Practice DOM selection methods and their use cases, especially `querySelectorAll`</li>
+                                    
+                                    <li>Work on explaining JavaScript code logic clearly and accurately</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                    </li>
+                    
+                    <li>
+                        <div class="question-text"><strong></strong> Css</div>
+                        
+                        <div class="feedback-item">
+                            <strong>1</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate attempted to explain CSS specificity and styling concepts but responses were unclear and technically inaccurate. The explanation of curved edges using &#39;border is highkey kept&#39; was vague and did not demonstrate understanding of CSS border-radius or related properties.</div>
+                            
+                            
+                            <div class="answer-summary"><strong>Improvement Points:</strong>
+                                <ul>
+                                    
+                                    <li>Unclear explanation of CSS specificity and its application</li>
+                                    
+                                    <li>Incorrect or vague description of styling techniques for curved edges</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Study CSS specificity rules and practice identifying selector precedence</li>
+                                    
+                                    <li>Learn and practice using CSS properties like `border-radius` for curved edges</li>
+                                    
+                                    <li>Use precise language when describing CSS concepts and effects</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                    </li>
+                    
+                    <li>
+                        <div class="question-text"><strong></strong> Web_design</div>
+                        
+                        <div class="feedback-item">
+                            <strong>1</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate struggled with basic web design tools such as browser developer tools, specifically inspecting elements and switching to mobile view. They acknowledged not knowing how to select mobile view and admitted to not focusing on responsive design.</div>
+                            
+                            
+                            <div class="answer-summary"><strong>Improvement Points:</strong>
+                                <ul>
+                                    
+                                    <li>Lack of familiarity with browser developer tools and responsive design testing</li>
+                                    
+                                    <li>No demonstrated experience or focus on building responsive websites</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Practice using browser developer tools to inspect elements and simulate mobile views</li>
+                                    
+                                    <li>Learn fundamentals of responsive web design including media queries and flexible layouts</li>
+                                    
+                                    <li>Build simple responsive web pages to gain hands-on experience</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                    </li>
+                    
+                    <li>
+                        <div class="question-text"><strong></strong> Javascript</div>
+                        
+                        <div class="feedback-item">
+                            <strong>1</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate demonstrated a basic grasp of JavaScript fundamentals such as parsing floats, arithmetic operations, and event handling. However, there were multiple inaccuracies and incomplete explanations, especially regarding event bubbling, closures, and proper use of selectors. The candidate admitted to still learning several concepts and made errors in code logic during explanations.</div>
+                            
+                            
+                            <div class="answer-summary"><strong>Improvement Points:</strong>
+                                <ul>
+                                    
+                                    <li>Lack of understanding of event bubbling and capturing</li>
+                                    
+                                    <li>Incomplete or incorrect explanation of JavaScript closures</li>
+                                    
+                                    <li>Confusion about the use of `querySelectorAll` and DOM manipulation</li>
+                                    
+                                    <li>Errors in arithmetic logic and parsing input values</li>
+                                    
+                                    <li>Inconsistent clarity and technical precision in answers</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Deepen understanding of JavaScript event model and closures through tutorials and practice</li>
+                                    
+                                    <li>Practice writing and debugging JavaScript code involving DOM manipulation and events</li>
+                                    
+                                    <li>Use coding exercises to reinforce parsing and arithmetic operations with user inputs</li>
+                                    
+                                    <li>Prepare clear, structured explanations of JavaScript concepts</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                    </li>
+                    
+                    <li>
+                        <div class="question-text"><strong></strong> Python</div>
+                        
+                        <div class="feedback-item">
+                            <strong>1</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate rated themselves low in Python proficiency and showed limited knowledge of advanced concepts such as decorators and deep vs shallow copy. They provided a basic definition of recursion and abstraction but struggled with string manipulation questions. Overall, the responses indicated a beginner level with gaps in core Python concepts.</div>
+                            
+                            
+                            <div class="answer-summary"><strong>Improvement Points:</strong>
+                                <ul>
+                                    
+                                    <li>No knowledge of decorators and shallow vs deep copy</li>
+                                    
+                                    <li>Limited ability to manipulate strings and apply Python concepts practically</li>
+                                    
+                                    <li>Basic and sometimes unclear explanations of abstraction and recursion</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Study Python core concepts including decorators, copying mechanisms, and string operations</li>
+                                    
+                                    <li>Practice coding problems involving recursion and abstraction</li>
+                                    
+                                    <li>Work on articulating Python concepts clearly with examples</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                    </li>
+                    
+                    <li>
+                        <div class="question-text"><strong></strong> Sql</div>
+                        
+                        <div class="feedback-item">
+                            <strong>1</strong>
+                            
+                            <div class="answer-summary"><strong>Feedback Summary:</strong> The candidate demonstrated a basic understanding of SQL concepts such as the difference between WHERE and HAVING clauses, common aggregation functions, and the concept of subqueries. However, explanations were sometimes imprecise, and the approach to query optimization was limited to normalization without deeper insights.</div>
+                            
+                            
+                            <div class="answer-summary"><strong>Improvement Points:</strong>
+                                <ul>
+                                    
+                                    <li>Simplistic explanation of query optimization focusing only on normalization</li>
+                                    
+                                    <li>Lack of detailed understanding of advanced SQL performance techniques</li>
+                                    
+                                    <li>Some imprecision in defining subqueries and aggregation functions</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            
+                            <div class="answer-summary"><strong>Suggestions:</strong>
+                                <ul>
+                                    
+                                    <li>Expand knowledge of SQL query optimization techniques including indexing and query plans</li>
+                                    
+                                    <li>Practice writing complex queries involving subqueries and aggregations</li>
+                                    
+                                    <li>Use real-world examples to explain SQL concepts more precisely</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>Generated on: July 30, 2025 12:19:26 IST </p>
+        </div>
+
+        <!-- Debugging Script for Links -->
+        <script>
+        function debugLink(linkType, url) {
+            console.log(`${linkType} clicked: ${url}`);
+            try {
+                new URL(url);
+                console.log(`${linkType} URL appears valid`);
+            } catch (e) {
+                console.error(`${linkType} URL is invalid: ${e.message}`);
+                alert(`Unable to open ${linkType}. Please copy this URL and open it manually: ${url}`);
+            }
+            setTimeout(() => {
+                if (document.hasFocus()) {
+                    alert(`It looks like the ${linkType} couldn't be opened. Please copy this URL and open it manually: ${url}`);
+                }
+            }, 1000);
+        }
+        </script>
+
+        <!-- Existing Debugging Script (Retained for Reference) -->
+        <script>
+            // Debug Common Topic Ratings
+            
+
+            // Debug Language Ratings
+            
+            
+            console.log("General Ratings:");
+            
+            console.log("Self Introduction: display_value = 4");
+            
+            console.log("Communication: display_value = 3");
+            
+            
+            
+            
+            console.log("Project evaluation Ratings:");
+            
+            console.log("Project Explanation: display_value = 3");
+            
+            
+            
+            
+            console.log("Technical theory Ratings:");
+            
+            console.log("Technical Theory Ratings: display_value = 4");
+            
+            
+            
+            
+            console.log("Programming Ratings:");
+            
+            console.log("Javascript Coding
+Rating: display_value = 4");
+            
+            console.log("Python Coding Rating: display_value = 5");
+            
+            console.log("Sql Coding
+Rating: display_value = 2");
+            
+            
+            
+        </script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-java.min.js"></script>
+</body>
+</html>
